@@ -51,7 +51,16 @@ function check_student_login()
 		$_SESSION['user_details']['user_level_id'] = 3;
 		$_SESSION['user_details']['user_id'] = $_SESSION['user_details']['student_id'];
 		$_SESSION['user_details']['user_name'] = $_SESSION['user_details']['student_name'];
-		header("Location:../dashboard.php");
+		
+		if($_SESSION['user_details']['questionnaire'] == 0)
+		{
+			header("Location:../questionnaire.php");
+		}
+		else
+		{
+			header("Location:../dashboard.php");
+		}
+		
 	}
 	else
 	{
