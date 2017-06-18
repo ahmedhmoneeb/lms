@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 09, 2016 at 02:47 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Jun 18, 2017 at 01:57 PM
+-- Server version: 5.7.18-0ubuntu0.16.04.1
+-- PHP Version: 7.0.20-2~ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `elearning_system`
@@ -26,15 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcement`
 --
 
-CREATE TABLE IF NOT EXISTS `announcement` (
-  `announcement_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `announcement` (
+  `announcement_id` int(11) NOT NULL,
   `announcement_class_id` varchar(255) NOT NULL,
   `announcement_teacher_id` varchar(255) NOT NULL,
   `announcement_title` varchar(255) NOT NULL,
   `announcement_description` varchar(255) NOT NULL,
-  `announcement_date` varchar(255) NOT NULL,
-  PRIMARY KEY (`announcement_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `announcement_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `announcement`
@@ -49,16 +48,15 @@ INSERT INTO `announcement` (`announcement_id`, `announcement_class_id`, `announc
 -- Table structure for table `assignment`
 --
 
-CREATE TABLE IF NOT EXISTS `assignment` (
-  `assignment_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `assignment` (
+  `assignment_id` int(11) NOT NULL,
   `assignment_title` varchar(255) NOT NULL,
   `assignment_filename` varchar(255) NOT NULL,
   `assignment_description` varchar(255) NOT NULL,
   `assignment_teacher_id` varchar(255) NOT NULL,
   `assignment_class_id` varchar(255) NOT NULL,
-  `assignment_date` varchar(255) NOT NULL,
-  PRIMARY KEY (`assignment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+  `assignment_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assignment`
@@ -74,11 +72,10 @@ INSERT INTO `assignment` (`assignment_id`, `assignment_title`, `assignment_filen
 -- Table structure for table `city`
 --
 
-CREATE TABLE IF NOT EXISTS `city` (
-  `city_id` int(11) NOT NULL AUTO_INCREMENT,
-  `city_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`city_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `city` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `city`
@@ -94,12 +91,11 @@ INSERT INTO `city` (`city_id`, `city_name`) VALUES
 -- Table structure for table `class`
 --
 
-CREATE TABLE IF NOT EXISTS `class` (
-  `class_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `class` (
+  `class_id` int(11) NOT NULL,
   `class_title` varchar(100) NOT NULL,
-  `class_description` varchar(300) NOT NULL,
-  PRIMARY KEY (`class_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `class_description` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
@@ -118,11 +114,10 @@ INSERT INTO `class` (`class_id`, `class_title`, `class_description`) VALUES
 -- Table structure for table `country`
 --
 
-CREATE TABLE IF NOT EXISTS `country` (
-  `country_id` int(11) NOT NULL AUTO_INCREMENT,
-  `country_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `country` (
+  `country_id` int(11) NOT NULL,
+  `country_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `country`
@@ -138,13 +133,12 @@ INSERT INTO `country` (`country_id`, `country_name`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE IF NOT EXISTS `course` (
-  `course_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `course` (
+  `course_id` int(11) NOT NULL,
   `course_title` varchar(255) NOT NULL,
   `course_total_semestor` varchar(255) NOT NULL,
-  `course_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `course_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
@@ -162,13 +156,12 @@ INSERT INTO `course` (`course_id`, `course_title`, `course_total_semestor`, `cou
 -- Table structure for table `department`
 --
 
-CREATE TABLE IF NOT EXISTS `department` (
-  `department_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `department` (
+  `department_id` int(11) NOT NULL,
   `department_title` varchar(255) NOT NULL,
   `department_description` varchar(255) NOT NULL,
-  `department_code` varchar(255) NOT NULL,
-  PRIMARY KEY (`department_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `department_code` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `department`
@@ -186,16 +179,15 @@ INSERT INTO `department` (`department_id`, `department_title`, `department_descr
 -- Table structure for table `event`
 --
 
-CREATE TABLE IF NOT EXISTS `event` (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `event` (
+  `event_id` int(11) NOT NULL,
   `event_class_id` varchar(255) NOT NULL,
   `event_teacher_id` varchar(255) NOT NULL,
   `event_title` varchar(100) NOT NULL,
   `event_description` text NOT NULL,
   `event_date_start` varchar(100) NOT NULL,
-  `event_date_end` varchar(100) NOT NULL,
-  PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `event_date_end` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `event`
@@ -211,14 +203,13 @@ INSERT INTO `event` (`event_id`, `event_class_id`, `event_teacher_id`, `event_ti
 -- Table structure for table `exam`
 --
 
-CREATE TABLE IF NOT EXISTS `exam` (
-  `exam_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exam` (
+  `exam_id` int(11) NOT NULL,
   `exam_title` varchar(255) NOT NULL,
   `exam_etype_id` varchar(255) NOT NULL,
   `exam_month_id` varchar(255) NOT NULL,
-  `exam_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`exam_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `exam_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam`
@@ -233,12 +224,11 @@ INSERT INTO `exam` (`exam_id`, `exam_title`, `exam_etype_id`, `exam_month_id`, `
 -- Table structure for table `exam_type`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_type` (
-  `etype_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exam_type` (
+  `etype_id` int(11) NOT NULL,
   `etype_title` varchar(255) NOT NULL,
-  `etype_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`etype_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `etype_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam_type`
@@ -253,15 +243,14 @@ INSERT INTO `exam_type` (`etype_id`, `etype_title`, `etype_description`) VALUES
 -- Table structure for table `files`
 --
 
-CREATE TABLE IF NOT EXISTS `files` (
-  `files_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `files` (
+  `files_id` int(11) NOT NULL,
   `files_title` varchar(255) NOT NULL,
   `files_class_id` varchar(255) NOT NULL,
   `files_teacher_id` varchar(255) NOT NULL,
   `files_filename` varchar(255) NOT NULL,
-  `files_description` text NOT NULL,
-  PRIMARY KEY (`files_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `files_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `files`
@@ -277,12 +266,11 @@ INSERT INTO `files` (`files_id`, `files_title`, `files_class_id`, `files_teacher
 -- Table structure for table `login_level`
 --
 
-CREATE TABLE IF NOT EXISTS `login_level` (
-  `level_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `login_level` (
+  `level_id` int(11) NOT NULL,
   `level_title` varchar(255) NOT NULL,
-  `level_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`level_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `level_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -290,17 +278,16 @@ CREATE TABLE IF NOT EXISTS `login_level` (
 -- Table structure for table `marks`
 --
 
-CREATE TABLE IF NOT EXISTS `marks` (
-  `marks_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `marks` (
+  `marks_id` int(11) NOT NULL,
   `marks_exam_id` varchar(255) NOT NULL,
   `marks_student_id` varchar(255) NOT NULL,
   `marks_subject_id` varchar(255) NOT NULL,
   `marks_written` varchar(255) NOT NULL,
   `marks_practical` varchar(255) NOT NULL,
   `marks_semestor_id` varchar(255) NOT NULL,
-  `marks_description` varchar(500) NOT NULL,
-  PRIMARY KEY (`marks_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `marks_description` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marks`
@@ -319,17 +306,16 @@ INSERT INTO `marks` (`marks_id`, `marks_exam_id`, `marks_student_id`, `marks_sub
 -- Table structure for table `message`
 --
 
-CREATE TABLE IF NOT EXISTS `message` (
-  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL,
   `message_sender_id` varchar(255) NOT NULL,
   `message_receiver_id` varchar(255) NOT NULL,
   `message_type` varchar(255) NOT NULL,
   `message_sender_type` varchar(255) NOT NULL,
   `message_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message_subject` text NOT NULL,
-  `message_content` text NOT NULL,
-  PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `message_content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `message`
@@ -352,11 +338,10 @@ INSERT INTO `message` (`message_id`, `message_sender_id`, `message_receiver_id`,
 -- Table structure for table `month`
 --
 
-CREATE TABLE IF NOT EXISTS `month` (
-  `month_id` int(11) NOT NULL AUTO_INCREMENT,
-  `month_title` varchar(255) NOT NULL,
-  PRIMARY KEY (`month_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+CREATE TABLE `month` (
+  `month_id` int(11) NOT NULL,
+  `month_title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `month`
@@ -379,17 +364,38 @@ INSERT INTO `month` (`month_id`, `month_title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questionnaire`
+--
+
+CREATE TABLE `questionnaire` (
+  `student_id` int(11) NOT NULL,
+  `q1` varchar(20) NOT NULL,
+  `q2` varchar(20) NOT NULL,
+  `q3` varchar(20) NOT NULL,
+  `q4` varchar(20) NOT NULL,
+  `q5` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `questionnaire`
+--
+
+INSERT INTO `questionnaire` (`student_id`, `q1`, `q2`, `q3`, `q4`, `q5`) VALUES
+(1, 'a', 'b', 'a', 'b', 'b');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quiz`
 --
 
-CREATE TABLE IF NOT EXISTS `quiz` (
-  `quiz_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quiz` (
+  `quiz_id` int(11) NOT NULL,
   `quiz_class_id` varchar(255) NOT NULL,
   `quiz_teacher_id` varchar(255) NOT NULL,
   `quiz_title` varchar(255) NOT NULL,
-  `quiz_description` text NOT NULL,
-  PRIMARY KEY (`quiz_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `quiz_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quiz`
@@ -405,8 +411,8 @@ INSERT INTO `quiz` (`quiz_id`, `quiz_class_id`, `quiz_teacher_id`, `quiz_title`,
 -- Table structure for table `quiz_question`
 --
 
-CREATE TABLE IF NOT EXISTS `quiz_question` (
-  `qq_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quiz_question` (
+  `qq_id` int(11) NOT NULL,
   `qq_quiz_id` varchar(100) NOT NULL,
   `qq_question` text NOT NULL,
   `qq_option1` varchar(500) NOT NULL,
@@ -414,9 +420,8 @@ CREATE TABLE IF NOT EXISTS `quiz_question` (
   `qq_option3` varchar(500) NOT NULL,
   `qq_option4` varchar(500) NOT NULL,
   `qq_correct` varchar(500) NOT NULL,
-  `qq_description` text NOT NULL,
-  PRIMARY KEY (`qq_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `qq_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quiz_question`
@@ -439,15 +444,14 @@ INSERT INTO `quiz_question` (`qq_id`, `qq_quiz_id`, `qq_question`, `qq_option1`,
 -- Table structure for table `quiz_result`
 --
 
-CREATE TABLE IF NOT EXISTS `quiz_result` (
-  `qr_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `quiz_result` (
+  `qr_id` int(11) NOT NULL,
   `qr_quiz_id` varchar(255) NOT NULL,
   `qr_student_id` varchar(255) NOT NULL,
   `qr_total_question` varchar(255) NOT NULL,
   `qr_answer` varchar(255) NOT NULL,
-  `qr_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`qr_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `qr_date` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quiz_result`
@@ -463,11 +467,10 @@ INSERT INTO `quiz_result` (`qr_id`, `qr_quiz_id`, `qr_student_id`, `qr_total_que
 -- Table structure for table `role`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
-  `role_id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+CREATE TABLE `role` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `role`
@@ -484,12 +487,11 @@ INSERT INTO `role` (`role_id`, `role_name`) VALUES
 -- Table structure for table `school_year`
 --
 
-CREATE TABLE IF NOT EXISTS `school_year` (
-  `syear_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `school_year` (
+  `syear_id` int(11) NOT NULL,
   `syear_title` varchar(255) NOT NULL,
-  `syear_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`syear_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `syear_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school_year`
@@ -506,12 +508,11 @@ INSERT INTO `school_year` (`syear_id`, `syear_title`, `syear_description`) VALUE
 -- Table structure for table `semestor`
 --
 
-CREATE TABLE IF NOT EXISTS `semestor` (
-  `semestor_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `semestor` (
+  `semestor_id` int(11) NOT NULL,
   `semestor_title` varchar(255) NOT NULL,
-  `semestor_description` varchar(255) NOT NULL,
-  PRIMARY KEY (`semestor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `semestor_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `semestor`
@@ -533,11 +534,10 @@ INSERT INTO `semestor` (`semestor_id`, `semestor_title`, `semestor_description`)
 -- Table structure for table `state`
 --
 
-CREATE TABLE IF NOT EXISTS `state` (
-  `state_id` int(11) NOT NULL AUTO_INCREMENT,
-  `state_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`state_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+CREATE TABLE `state` (
+  `state_id` int(11) NOT NULL,
+  `state_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `state`
@@ -553,8 +553,8 @@ INSERT INTO `state` (`state_id`, `state_name`) VALUES
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
-  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student` (
+  `student_id` int(11) NOT NULL,
   `student_course_id` varchar(255) NOT NULL,
   `student_rollno` varchar(255) NOT NULL,
   `student_name` varchar(255) NOT NULL,
@@ -565,18 +565,19 @@ CREATE TABLE IF NOT EXISTS `student` (
   `student_details` varchar(500) NOT NULL,
   `student_username` varchar(255) NOT NULL,
   `student_password` varchar(255) NOT NULL,
-  PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `questionnaire` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_course_id`, `student_rollno`, `student_name`, `student_father_name`, `student_dob`, `student_mobile`, `student_photo`, `student_details`, `student_username`, `student_password`) VALUES
-(1, '12', '100011', 'Kaushal Kishore', 'Sumit Kumar', '1 January, 1990', '987654343', 'IMG_5748.jpg', '', 'student', 'test'),
-(3, '1', '100112', 'Sunil Singh', 'Anil Singh', '12 January, 1992', '9898786756', 'IMG_5748.jpg', 'Sunil Singh', '', ''),
-(5, '13', '123456', 'Jay Kumar', 'Kaushal Kishore', '14 May,2016', '9876787654', 'Login Page.png', 'Jay Kumar', 'jay', 'test'),
-(6, '12', 'asdf', 'asdfsad', 'sadf', 'asfdg', 'dsfg', 'Cover.jpg', 'sdfg', 'dsaf', 'aaaa');
+INSERT INTO `student` (`student_id`, `student_course_id`, `student_rollno`, `student_name`, `student_father_name`, `student_dob`, `student_mobile`, `student_photo`, `student_details`, `student_username`, `student_password`, `questionnaire`) VALUES
+(1, '12', '100011', 'Kaushal Kishore', 'Sumit Kumar', '1 January, 1990', '987654343', 'IMG_5748.jpg', '', 'student', 'test', 0),
+(3, '1', '100112', 'Sunil Singh', 'Anil Singh', '12 January, 1992', '9898786756', 'IMG_5748.jpg', 'Sunil Singh', '', '', 0),
+(5, '13', '123456', 'Jay Kumar', 'Kaushal Kishore', '14 May,2016', '9876787654', 'Login Page.png', 'Jay Kumar', 'jay', 'test', 0),
+(6, '12', 'asdf', 'asdfsad', 'sadf', 'asfdg', 'dsfg', 'Cover.jpg', 'sdfg', 'dsaf', 'aaaa', 0),
+(7, '12', 'ssd', 'afnan', 'sddcx', '14 June,2017', 'dfd', '', 'df', 'afnan', '123', 0);
 
 -- --------------------------------------------------------
 
@@ -584,14 +585,13 @@ INSERT INTO `student` (`student_id`, `student_course_id`, `student_rollno`, `stu
 -- Table structure for table `subject`
 --
 
-CREATE TABLE IF NOT EXISTS `subject` (
-  `subject_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject` (
+  `subject_id` int(11) NOT NULL,
   `subject_class_id` varchar(255) NOT NULL,
   `subject_code` varchar(100) NOT NULL,
   `subject_title` varchar(100) NOT NULL,
-  `subject_description` longtext NOT NULL,
-  PRIMARY KEY (`subject_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+  `subject_description` longtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject`
@@ -628,13 +628,12 @@ INSERT INTO `subject` (`subject_id`, `subject_class_id`, `subject_code`, `subjec
 -- Table structure for table `teacher_class`
 --
 
-CREATE TABLE IF NOT EXISTS `teacher_class` (
-  `tc_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teacher_class` (
+  `tc_id` int(11) NOT NULL,
   `tc_user_id` varchar(255) NOT NULL,
   `tc_class_id` varchar(255) NOT NULL,
-  `tc_description` text NOT NULL,
-  PRIMARY KEY (`tc_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `tc_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher_class`
@@ -651,8 +650,8 @@ INSERT INTO `teacher_class` (`tc_id`, `tc_user_id`, `tc_class_id`, `tc_descripti
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
   `user_level_id` varchar(255) NOT NULL,
   `user_username` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
@@ -666,9 +665,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_mobile` varchar(255) NOT NULL,
   `user_gender` varchar(255) NOT NULL,
   `user_dob` varchar(255) NOT NULL,
-  `user_image` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `user_image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -677,7 +675,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`user_id`, `user_level_id`, `user_username`, `user_password`, `user_name`, `user_add1`, `user_add2`, `user_city`, `user_state`, `user_country`, `user_email`, `user_mobile`, `user_gender`, `user_dob`, `user_image`) VALUES
 (4, '1', 'admin', 'test', 'Kaushal Kishore', 'House no : 768', 'Sector 2B', '1', '1', '2', 'kaushal.rahuljaiswal@gmail.com', '987654321', '', '12 january, 2013', 'IMG_5740.jpg'),
 (6, '2', 'atul', 'test', 'Atul Kumar', 'House no : 712', 'Sector 2A', '1', '2', '1', 'atul@gmail.com', '987654321', '', '12 january, 2013', 'Female_8_.png'),
-(9, '2', 'kaushal', 'test', 'Kaushal Kishore', 'New Lahore Colony', 'Shirur', '2', '2', '2', 'kaushal.rahuljaiswal@gmail.com', '9876543212', '', '19 May,2016', 'Login Page.png');
+(9, '2', 'kaushal', 'test', 'Kaushal Kishore', 'New Lahore Colony', 'Shirur', '2', '2', '2', 'kaushal.rahuljaiswal@gmail.com', '9876543212', '', '19 May,2016', 'Login Page.png'),
+(10, '2', 'afnan', '123', 'afnan', 'dgfd', 'sds', '1', '2', '1', 'dfd', 'dfdg', '', '15 June,2017', '');
 
 -- --------------------------------------------------------
 
@@ -685,14 +684,13 @@ INSERT INTO `user` (`user_id`, `user_level_id`, `user_username`, `user_password`
 -- Table structure for table `user_log`
 --
 
-CREATE TABLE IF NOT EXISTS `user_log` (
-  `ulog_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_log` (
+  `ulog_id` int(11) NOT NULL,
   `ulog_username` varchar(25) NOT NULL,
   `ulog_login_date` varchar(30) NOT NULL,
   `ulog_logout_date` varchar(30) NOT NULL,
-  `ulog_user_id` int(11) NOT NULL,
-  PRIMARY KEY (`ulog_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+  `ulog_user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_log`
@@ -719,6 +717,327 @@ INSERT INTO `user_log` (`ulog_id`, `ulog_username`, `ulog_login_date`, `ulog_log
 (18, 'admin', '2013-11-14 11:44:08', '2013-11-18 10:33:54', 10),
 (19, 'admin', '2013-11-14 21:53:56', '2013-11-18 10:33:54', 10),
 (20, 'admin', '2013-11-14 22:03:53', '2013-11-18 10:33:54', 10);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`announcement_id`);
+
+--
+-- Indexes for table `assignment`
+--
+ALTER TABLE `assignment`
+  ADD PRIMARY KEY (`assignment_id`);
+
+--
+-- Indexes for table `city`
+--
+ALTER TABLE `city`
+  ADD PRIMARY KEY (`city_id`);
+
+--
+-- Indexes for table `class`
+--
+ALTER TABLE `class`
+  ADD PRIMARY KEY (`class_id`);
+
+--
+-- Indexes for table `country`
+--
+ALTER TABLE `country`
+  ADD PRIMARY KEY (`country_id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`event_id`);
+
+--
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`exam_id`);
+
+--
+-- Indexes for table `exam_type`
+--
+ALTER TABLE `exam_type`
+  ADD PRIMARY KEY (`etype_id`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`files_id`);
+
+--
+-- Indexes for table `login_level`
+--
+ALTER TABLE `login_level`
+  ADD PRIMARY KEY (`level_id`);
+
+--
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`marks_id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `month`
+--
+ALTER TABLE `month`
+  ADD PRIMARY KEY (`month_id`);
+
+--
+-- Indexes for table `questionnaire`
+--
+ALTER TABLE `questionnaire`
+  ADD KEY `user_id` (`student_id`);
+
+--
+-- Indexes for table `quiz`
+--
+ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`quiz_id`);
+
+--
+-- Indexes for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`qq_id`);
+
+--
+-- Indexes for table `quiz_result`
+--
+ALTER TABLE `quiz_result`
+  ADD PRIMARY KEY (`qr_id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `school_year`
+--
+ALTER TABLE `school_year`
+  ADD PRIMARY KEY (`syear_id`);
+
+--
+-- Indexes for table `semestor`
+--
+ALTER TABLE `semestor`
+  ADD PRIMARY KEY (`semestor_id`);
+
+--
+-- Indexes for table `state`
+--
+ALTER TABLE `state`
+  ADD PRIMARY KEY (`state_id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`student_id`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`subject_id`);
+
+--
+-- Indexes for table `teacher_class`
+--
+ALTER TABLE `teacher_class`
+  ADD PRIMARY KEY (`tc_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_log`
+--
+ALTER TABLE `user_log`
+  ADD PRIMARY KEY (`ulog_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `assignment`
+--
+ALTER TABLE `assignment`
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `city`
+--
+ALTER TABLE `city`
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `country`
+--
+ALTER TABLE `country`
+  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `exam_type`
+--
+ALTER TABLE `exam_type`
+  MODIFY `etype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `login_level`
+--
+ALTER TABLE `login_level`
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `month`
+--
+ALTER TABLE `month`
+  MODIFY `month_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `quiz`
+--
+ALTER TABLE `quiz`
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  MODIFY `qq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `quiz_result`
+--
+ALTER TABLE `quiz_result`
+  MODIFY `qr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `school_year`
+--
+ALTER TABLE `school_year`
+  MODIFY `syear_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `semestor`
+--
+ALTER TABLE `semestor`
+  MODIFY `semestor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `state`
+--
+ALTER TABLE `state`
+  MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT for table `teacher_class`
+--
+ALTER TABLE `teacher_class`
+  MODIFY `tc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `user_log`
+--
+ALTER TABLE `user_log`
+  MODIFY `ulog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `questionnaire`
+--
+ALTER TABLE `questionnaire`
+  ADD CONSTRAINT `student_questionnaire` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
