@@ -1,5 +1,5 @@
-<?php 
-	include_once("includes/header.php"); 
+<?php
+	include_once("includes/header.php");
 	if($_REQUEST[files_id])
 	{
 		$SQL="SELECT * FROM files WHERE files_id = $_REQUEST[files_id]";
@@ -26,10 +26,11 @@
 					<?php echo get_new_optionlist("subject","subject_id","subject_title",$data[files_subject_id]); ?>
 				  </select>
 				</div>
+			</div>
 			  <div class="form-group">
 				<label class="control-label col-sm-2" for="email">Select Class : </label>
 				<div class="col-sm-10">
-				  <select class="form-control" id="sel1" name="files_class_id" required>
+				  <select class="form-control" id="sel3" name="files_class_id" required>
 					<?php echo get_new_optionlist("class","class_id","class_title",$data[files_class_id]); ?>
 				  </select>
 				</div>
@@ -46,7 +47,7 @@
 				  <textarea class="form-control" rows="5" id="comment" name="files_description" placeholder="Enter Files Description" required><?=$data['files_description']?></textarea>
 				</div>
 			  </div>
-			  <div class="form-group"> 
+			  <div class="form-group">
 				<label class="control-label col-sm-2" for="email"></label>
 				<div class="col-sm-10" style="text-align:left;">
 				  <button type="submit" class="btn btn-primary" style="width:140px; padding:8px;">Submit</button>
