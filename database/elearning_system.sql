@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2017 at 01:57 PM
+-- Generation Time: Jun 20, 2017 at 09:50 AM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.20-2~ubuntu16.04.1+deb.sury.org+1
 
@@ -246,19 +246,22 @@ INSERT INTO `exam_type` (`etype_id`, `etype_title`, `etype_description`) VALUES
 CREATE TABLE `files` (
   `files_id` int(11) NOT NULL,
   `files_title` varchar(255) NOT NULL,
+  `files_subject_id` int(11) NOT NULL,
   `files_class_id` varchar(255) NOT NULL,
   `files_teacher_id` varchar(255) NOT NULL,
   `files_filename` varchar(255) NOT NULL,
-  `files_description` text NOT NULL
+  `files_description` text NOT NULL,
+  `files_rate` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`files_id`, `files_title`, `files_class_id`, `files_teacher_id`, `files_filename`, `files_description`) VALUES
-(2, 'Files for BSIS - 3A ', '12', '6', 'Best Keyword Cover Search.pdf', 'Files for BSIS - 3A '),
-(3, 'Files for BSIS - 3B', '13', '6', 'DownloadFile (3).pdf', 'Files for BSIS - 3B');
+INSERT INTO `files` (`files_id`, `files_title`, `files_subject_id`, `files_class_id`, `files_teacher_id`, `files_filename`, `files_description`, `files_rate`) VALUES
+(2, 'Files for BSIS - 3A ', 28, '12', '6', 'Best Keyword Cover Search.pdf', 'Files for BSIS - 3A ', 1),
+(3, 'Files for BSIS - 3B', 30, '13', '6', 'DownloadFile (3).pdf', 'Files for BSIS - 3B', 0),
+(4, 'f1', 28, '12', '6', 'elearning_system.sql', 'dfdfg', 4);
 
 -- --------------------------------------------------------
 
@@ -582,6 +585,26 @@ INSERT INTO `student` (`student_id`, `student_course_id`, `student_rollno`, `stu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students_files_rating`
+--
+
+CREATE TABLE `students_files_rating` (
+  `student_id` int(11) NOT NULL,
+  `file_id` int(11) NOT NULL,
+  `rate` enum('1','2','3','4','5') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students_files_rating`
+--
+
+INSERT INTO `students_files_rating` (`student_id`, `file_id`, `rate`) VALUES
+(7, 2, '1'),
+(7, 4, '4');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subject`
 --
 
@@ -867,6 +890,13 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `students_files_rating`
+--
+ALTER TABLE `students_files_rating`
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `file_id` (`file_id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -948,7 +978,7 @@ ALTER TABLE `exam_type`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `files_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `login_level`
 --
@@ -1038,6 +1068,13 @@ ALTER TABLE `user_log`
 --
 ALTER TABLE `questionnaire`
   ADD CONSTRAINT `student_questionnaire` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `students_files_rating`
+--
+ALTER TABLE `students_files_rating`
+  ADD CONSTRAINT `file_rate` FOREIGN KEY (`file_id`) REFERENCES `files` (`files_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_rate` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

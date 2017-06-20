@@ -57,6 +57,7 @@
 			<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mydash">
 				<a href="subject-report.php" class="btn btn-default btn-circle"><div>View<br>Subjects</div></a>	
 			</div><!--/.col-->				
+			
 			<div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 mydash">
 				<a href="files-report.php" class="btn btn-default btn-circle"><div>View<br>File</div></a>	
 			</div><!--/.col-->

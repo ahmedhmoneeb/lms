@@ -19,6 +19,13 @@
 				  <input type="text" value="<?=$data['files_title']?>" class="form-control" id="files_title" name="files_title" placeholder="Enter Files Title" required>
 				</div>
 			  </div>
+				<div class="form-group">
+				<label class="control-label col-sm-2" for="email">Select Subject : </label>
+				<div class="col-sm-10">
+				  <select class="form-control" id="sel1" name="files_subject_id" required>
+					<?php echo get_new_optionlist("subject","subject_id","subject_title",$data[files_subject_id]); ?>
+				  </select>
+				</div>
 			  <div class="form-group">
 				<label class="control-label col-sm-2" for="email">Select Class : </label>
 				<div class="col-sm-10">

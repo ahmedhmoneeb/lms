@@ -46,6 +46,7 @@
 		}
 		$SQL=   $statement." 
 				`files_title` = '$R[files_title]', 
+				`files_subject_id` = '$R[files_subject_id]', 
 				`files_class_id` = '$R[files_class_id]', 
 				`files_teacher_id` = '".$_SESSION['user_details']['user_id']."',	
 				`files_description` = '$R[files_description]', 
