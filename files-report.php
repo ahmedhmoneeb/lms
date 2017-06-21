@@ -1,45 +1,45 @@
 <style>
             @import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
- 
+
             fieldset, label { margin: 0; padding: 0; }
             body{ margin: 20px; }
             h1 { font-size: 1.5em; margin: 10px; }
- 
-            .rating { 
+
+            .rating {
                 border: none;
                 float: left;
             }
- 
-            .rating > input { display: none; } 
-            .rating > label:before { 
+
+            .rating > input { display: none; }
+            .rating > label:before {
                 margin: 5px;
                 font-size: 1.25em;
                 font-family: FontAwesome;
                 display: inline-block;
                 content: "\f005";
             }
- 
-            .rating > .half:before { 
+
+            .rating > .half:before {
                 content: "\f089";
                 position: absolute;
             }
- 
-            .rating > label { 
-                color: #ddd; 
-                float: right; 
+
+            .rating > label {
+                color: #ddd;
+                float: right;
             }
- 
-            .rating > input:checked ~ label, 
-            .rating:not(:checked) > label:hover,  
+
+            .rating > input:checked ~ label,
+            .rating:not(:checked) > label:hover,
             .rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
- 
-            .rating > input:checked + label:hover, 
+
+            .rating > input:checked + label:hover,
             .rating > input:checked ~ label:hover,
-            .rating > label:hover ~ input:checked ~ label, 
-            .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }     
+            .rating > label:hover ~ input:checked ~ label,
+            .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
         </style>
-<?php 
-	include_once("includes/header.php"); 
+<?php
+	include_once("includes/header.php");
 	global $SERVER_PATH;
 	if(isset($_SESSION['user_details']['student_course_id']))
 	{
@@ -65,11 +65,11 @@ function delete_record(files_id)
 
 
 $(document).ready(function () {
-	
+
 
        $("#demo1 .stars").click(function () {
 		   var string = $(this).val();
-		          
+
             $.post('lib/rating.php',{rate:$(this).val() , fileID:'$_SESSION[files_id]' },function(d){
                  if(d!= 0)
                  {
@@ -77,9 +77,9 @@ $(document).ready(function () {
                  }else{
                      alert('Thanks For Rating');
                  }
-				 
+
             });
-			
+
             $(this).attr("checked");
     	});
     });
@@ -109,11 +109,11 @@ $(document).ready(function () {
 						 <th style="width:14%">Download</th>
 						 <?php if($_SESSION['user_details']['user_level_id'] == 2) { ?>
 							<th style="width:14%">Action</th>
-							
+
 						 <?php } ?>
 						 <th style="width:18%">Rate</th>
 					  </tr>
-					  <?php 
+					  <?php
 						$sr_no=1;
 						while($data = mysql_fetch_assoc($rs))
 						{
@@ -133,7 +133,7 @@ $(document).ready(function () {
 					     </td>
 						 <td>
 						  	<fieldset id='demo1' class="rating">
-							  
+
 								<input class="stars" type="radio" id="star5" name="rating" value="5" />
 								<label class = "full" for="star5" title="Awesome - 5 stars"></label>
 								<input class="stars" type="radio" id="star4" name="rating" value="4" />
@@ -144,7 +144,7 @@ $(document).ready(function () {
 								<label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
 								<input class="stars" type="radio" id="star1" name="rating" value="1" />
 								<label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-		
+
                     		</fieldset>
 							<label class ="rate_num" id = "rate_num"></label>
 						  </td>
@@ -155,7 +155,7 @@ $(document).ready(function () {
 							  <a class="delete-dialog btn btn-danger" data-id="<?php echo $data[files_id] ?>" data-toggle="modal" href="#myModal-2">Delete</i></a>
 						  </div>
 						  </td>
-						  
+
 						  <?php } ?>
 					  </tr>
 					  <?php } ?>
@@ -168,5 +168,5 @@ $(document).ready(function () {
 		  </div>
 	  </div>
 	</div>
-	
+
 <?php include_once("includes/footer.php"); ?>

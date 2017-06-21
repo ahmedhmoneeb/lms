@@ -35,7 +35,7 @@
 		.btn{display:inline-block;}
 </style>
 <?php
-	session_start();
+
 	include_once("includes/header.php");
 	if($_SESSION['user_details']['user_level_id'] == 2)
 	{
@@ -57,7 +57,7 @@
 		$SQL2="SELECT * FROM files,user,class WHERE files_class_id = class_id AND files_teacher_id = user_id AND user_id = '".$_SESSION['user_details']['user_id']."' ORDER BY files_rate DESC";
 	}
 	$rs2=mysql_query($SQL2) or die(mysql_error());
-
+	session_start();
 ?>
 <script>
 	$(document).ready(function() {
@@ -85,12 +85,15 @@
 								{
 											var len = data.length;
 											var txt = "";
+											var rate = [];
 											if(len > 0)
 											{
 													txt = '<br/><div class = "row" style ="font-size:20px;font-weight: bold;">'
 																+'<div class = "col-sm-2">File Title</div>'
 																+'<div class = "col-sm-2">File Name</div>'
-																+'<div class = "col-sm-2">Download</div></div>';
+																+'<div class = "col-sm-2">Download</div>'
+																+'<div class = "col-sm-2">Rate</div></div>';
+
 													for(var i=0;i<len;i++)
 													{
 
@@ -103,14 +106,23 @@
 																								+'<div class = "col-sm-2">'+data[i].files_title +'</div>'
 																								+'<div class = "col-sm-2">'+data[i].files_filename + '</div>'
 																								+'<div class = "col-sm-2"><div class="btn-group"><a href="<?php echo $SERVER_PATH."uploads/".$data[files_filename] ?>" class="btn btn-primary" target="_blank">Download File</a>'
-							 																	+'</div></div></div><br/><hr><br/>';
-																								 addScore(data[i].files_rate, $("#fixture"));
+							 																	+'</div></div><div class = "col-sm-2" id ="rate"></div></div><br/><hr><br/>';
+																	//addScore(data[i].files_rate, $("#fixture"));
+																						//$("#fixture").append(txt).removeClass("hidden");
+																	rate[i] = data[i].files_rate;
+																						//addScore(data[i].files_rate, $("#rate"));
 																}
 														}
 													}
 
 													if(txt != ""){
 															$("#fixture").append(txt).removeClass("hidden");
+
+															len = rate.length;
+															for(var i=0;i<len;i++)
+															{
+																addScore(rate[i], $("#rate"));
+															}
 													}
 
 												}
@@ -130,10 +142,11 @@
 
 
   function addScore(score, $domElement) {
-    $("<span class='stars-container'>")
+    $("<br/><span class='stars-container'>")
       .addClass("stars-" + score.toString())
       .text("★★★★★")
       .appendTo($domElement);
+
   }
 });
 </script>
