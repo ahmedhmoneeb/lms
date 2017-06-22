@@ -62,28 +62,22 @@ function delete_record(files_id)
 	this.document.frm_files.act.value="delete_files";
 	this.document.frm_files.submit();
 }
-
-
-$(document).ready(function () {
-
-
-       $("#demo1 .stars").click(function () {
-		   var string = $(this).val();
-
-            $.post('lib/rating.php',{rate:$(this).val() , fileID:'$_SESSION[files_id]' },function(d){
-                 if(d!= 0)
-                 {
-                     alert('You already rated');
-                 }else{
-                     alert('Thanks For Rating');
-                 }
-
-            });
-
-            $(this).attr("checked");
-    	});
-    });
 </script>
+<script>
+function rateFile(rateVal, fileId)
+{
+//window.alert(fileId);
+
+$.post('lib/rating.php',{rate:rateVal, fileID:"'"+fileId+"'"},function(d){
+             
+                     alert('Thanks You');
+			location.reload();
+});
+
+}
+</script>
+
+
 	<div class="container w">
 		<div class="row">
 			<div style="text-align:left; clear:both; font-weight:bold; border-bottom:1px solid #cccccc; width:95%; margin-bottom:10px; margin-left:20px"><h3>Downloaded Files Report</h3></div>
@@ -112,6 +106,7 @@ $(document).ready(function () {
 
 						 <?php } ?>
 						 <th style="width:18%">Rate</th>
+						<th>Current Rate</th>
 					  </tr>
 					  <?php
 						$sr_no=1;
@@ -132,22 +127,21 @@ $(document).ready(function () {
 							 </div>
 					     </td>
 						 <td>
-						  	<fieldset id='demo1' class="rating">
+						  	<fieldset id='demo<?php echo $data[files_id];?>' class="rating">
 
-								<input class="stars" type="radio" id="star5" name="rating" value="5" />
-								<label class = "full" for="star5" title="Awesome - 5 stars"></label>
-								<input class="stars" type="radio" id="star4" name="rating" value="4" />
-								<label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-								<input class="stars" type="radio" id="star3" name="rating" value="3" />
-								<label class = "full" for="star3" title="Meh - 3 stars"></label>
-								<input class="stars" type="radio" id="star2" name="rating" value="2" />
-								<label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-								<input class="stars" type="radio" id="star1" name="rating" value="1" />
-								<label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+								<input class="stars" onclick="rateFile(5,<?php echo $_SESSION[files_id];?>)" type="radio" id="star5<?php echo $_SESSION[files_id];?>" name="rating" value="5" />
+								<label class = "full" for="star5<?php echo $_SESSION[files_id];?>" title="Awesome - 5 stars"></label>
+								<input class="stars" onclick="rateFile(4,<?php echo $_SESSION[files_id];?>)" id="star4<?php echo $_SESSION[files_id];?>" type="radio" name="rating" value="4" />
+								<label class = "full" for="star4<?php echo $_SESSION[files_id];?>" title="Pretty good - 4 stars"></label>
+								<input class="stars" onclick="rateFile(3,<?php echo $_SESSION[files_id];?>)" type="radio" id="star3<?php echo $_SESSION[files_id];?>" name="rating" value="3" />
+								<label class = "full" for="star3<?php echo $_SESSION[files_id];?>" title="Meh - 3 stars"></label>
+								<input class="stars" onclick="rateFile(2,<?php echo $_SESSION[files_id];?>)" type="radio" id="star2<?php echo $_SESSION[files_id];?>" name="rating" value="2" />
+								<label class = "full" for="star2<?php echo $_SESSION[files_id];?>" title="Kinda bad - 2 stars"></label>
+								<input class="stars" onclick="rateFile(1,<?php echo $_SESSION[files_id];?>)" type="radio" id="star1<?php echo $_SESSION[files_id];?>" name="rating" value="1" />
+								<label class = "full" for="star1<?php echo $_SESSION[files_id];?>" title="Sucks big time - 1 star"></label>
 
-                    		</fieldset>
-							<label class ="rate_num" id = "rate_num"></label>
-						  </td>
+                   		</fieldset>
+							<label class ="rate_num" id = "rate_num"></label>						  </td>
 						 <?php if($_SESSION['user_details']['user_level_id'] == 2) { ?>
 						 <td>
 						  <div class="btn-group">
@@ -157,6 +151,7 @@ $(document).ready(function () {
 						  </td>
 
 						  <?php } ?>
+						<td><?php echo $data[files_rate] ?></td>
 					  </tr>
 					  <?php } ?>
 				   </tbody>

@@ -106,7 +106,7 @@
 																								+'<div class = "col-sm-2">'+data[i].files_title +'</div>'
 																								+'<div class = "col-sm-2">'+data[i].files_filename + '</div>'
 																								+'<div class = "col-sm-2"><div class="btn-group"><a href="<?php echo $SERVER_PATH."uploads/".$data[files_filename] ?>" class="btn btn-primary" target="_blank">Download File</a>'
-							 																	+'</div></div><div class = "col-sm-2" id ="rate"></div></div><br/><hr><br/>';
+							 																	+'</div></div><div class = "col-sm-2" id ="rate"><br class="stars-' + data[i].files_rate  +' "><span class="stars-container stars-'+data[i].files_rate+'">★★★★★</span></div></div><br/><hr><br/>';
 																	//addScore(data[i].files_rate, $("#fixture"));
 																						//$("#fixture").append(txt).removeClass("hidden");
 																	rate[i] = data[i].files_rate;
@@ -142,11 +142,7 @@
 
 
   function addScore(score, $domElement) {
-    $("<br/><span class='stars-container'>")
-      .addClass("stars-" + score.toString())
-      .text("★★★★★")
-      .appendTo($domElement);
-
+    
   }
 });
 </script>
